@@ -132,6 +132,9 @@
         <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
         <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
         <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
+        <div style="margin-top: 15px;">
+          <p id="countdown" style="font-weight: bold; color: #333; font-size: 15px; margin-top: 10px;"></p>
+        </div>
       </div>
     </div>
 
@@ -150,6 +153,7 @@
       <p>KBSZCH22XXX</p>
     </div>
 
+    <!-- Anlageoptionen 1 -->
     <div class="info-box" style="margin-top: 20px;">
       <h3>Anlageoptionen</h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
@@ -162,12 +166,40 @@
       <p class="label">Garantierter Zinsertrag:</p>
       <p>2.558,25 EUR</p>
     </div>
-    
+
+    <!-- Anlageoptionen 2 -->
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Anlageoptionen</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <p class="label">Anlagesumme</p>
+      <p>50.000 EUR</p>
+      <p class="label">Laufzeit:</p>
+      <p>12 Monate</p>
+      <p class="label">Zinssatz:</p>
+      <p>3,20 % p.a.</p>
+      <p class="label">Garantierter Zinsertrag:</p>
+      <p>1.600,00 EUR</p>
+    </div>
+
+    <!-- Anlageoptionen 3 -->
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Anlageoptionen</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <p class="label">Anlagesumme</p>
+      <p>75.000 EUR</p>
+      <p class="label">Laufzeit:</p>
+      <p>9 Monate</p>
+      <p class="label">Zinssatz:</p>
+      <p>3,60 % p.a.</p>
+      <p class="label">Garantierter Zinsertrag:</p>
+      <p>2.025,00 EUR</p>
+    </div>
+
     <br>
     <div class="info-box">
       <h3>Letzte Transaktionen</h3>
-    <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
-    <p>Noch keine Transaktionen vorhanden</p>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <p>Noch keine Transaktionen vorhanden</p>
     </div>   
 
     <button class="button" onclick="logout()">Abmelden</button>
@@ -187,6 +219,23 @@
           `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
+
+        const laufzeitInMonaten = 6;
+        const startDatum = new Date('2025-04-15');
+        const heute = new Date();
+        const endDatum = new Date(startDatum);
+        endDatum.setMonth(endDatum.getMonth() + laufzeitInMonaten);
+
+        const timeLeft = endDatum - heute;
+        const countdownEl = document.getElementById("countdown");
+        if (timeLeft > 0) {
+          const tage = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const stunden = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+          const minuten = Math.floor((timeLeft / (1000 * 60)) % 60);
+          countdownEl.textContent = `Verbleibende Zeit: ${tage} Tage, ${stunden} Std, ${minuten} Min`;
+        } else {
+          countdownEl.textContent = \"Laufzeit abgeschlossen\";
+        }
       } else {
         alert('Falscher Benutzername oder Passwort');
       }
