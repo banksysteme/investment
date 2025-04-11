@@ -132,7 +132,15 @@
         <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
         <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
         <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
-      </div>
+      <section style="background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); max-width: 600px; margin: 20px auto; font-family: Arial, sans-serif;">
+  <h2 style="font-size: 1.5rem; color: #333; margin-bottom: 16px;">Zinsertrag Fortschritt</h2>
+  <div style="width: 100%; height: 28px; background: #eee; border-radius: 14px; overflow: hidden;">
+    <div id="bar" style="height: 100%; background: #4CAF50; width: 0%; transition: width 1s ease-in-out;"></div>
+  </div>
+  <div id="amount" style="margin-top: 12px; font-weight: bold; color: #444; font-size: 1.1rem;">Berechne...</div>
+  <div id="daysLeft" style="margin-top: 4px; font-size: 0.95rem; color: #777;"></div>
+</section>
+</div>
     </div>
 
     <div class="info-box" style="margin-top: 20px;">
@@ -216,6 +224,35 @@
       document.getElementById('username').value = '';
       document.getElementById('password').value = '';
     }
+
+    <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const startParam = urlParams.get('start'); // Format: YYYY-MM-DD
+  const total = 2558.25;
+  const days = 180;
+  const dailyEarning = total / days;
+
+  const startDate = startParam ? new Date(startParam) : new Date('2025-04-11');
+  const today = new Date();
+
+  const timeDiff = today - startDate;
+  const daysPassed = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+  const daysRemaining = Math.max(0, days - daysPassed);
+  const currentEarnings = Math.min(daysPassed * dailyEarning, total);
+  const progress = (currentEarnings / total) * 100;
+
+  const bar = document.getElementById("bar");
+  const amountDisplay = document.getElementById("amount");
+  const daysLeftDisplay = document.getElementById("daysLeft");
+
+  setTimeout(() => {
+    bar.style.width = `${progress}%`;
+    amountDisplay.textContent = `${currentEarnings.toFixed(2).replace('.', ',')} € von 2.558,25 €`;
+    daysLeftDisplay.textContent = daysRemaining > 0
+      ? `Noch ${daysRemaining} Tag${daysRemaining === 1 ? '' : 'e'} bis vollständiger Zinsertrag.`
+      : `Zinsertrag vollständig erreicht.`;
+  }, 300);
+
   </script>
 </body>
 </html>
