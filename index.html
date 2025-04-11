@@ -128,8 +128,13 @@
         <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
       </div>
 
-      <!-- Zinsertrag Fortschritt ersetzt diese Box -->
-      <div class="info-box" style="padding: 20px;">
+      <div class="info-box">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
+        <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
+        <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
+      </div>
+
+      <div class="info-box" style="grid-column: span 2; padding: 20px;">
         <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag Fortschritt</p>
         <div style="margin-top: 12px; height: 28px; background: #eee; border-radius: 14px; overflow: hidden;">
           <div id="bar" style="height: 100%; background: #4CAF50; width: 0%; transition: width 1s ease-in-out;"></div>
@@ -157,9 +162,8 @@
     <div class="info-box" style="margin-top: 20px;">
       <h3>Anlageoptionen</h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
-      
+
       <div class="grid-boxes">
-        <!-- Option 1 -->
         <div class="info-box">
           <p class="label">Anlagesumme</p>
           <p>100.000 EUR</p>
@@ -171,7 +175,6 @@
           <p>2.558,25 EUR</p>
         </div>
 
-        <!-- Option 2 -->
         <div class="info-box">
           <p class="label">Anlagesumme</p>
           <p>50.000 EUR</p>
@@ -184,13 +187,13 @@
         </div>
       </div>
     </div>
-    
+
     <br>
     <div class="info-box">
       <h3>Letzte Transaktionen</h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
       <p>Noch keine Transaktionen vorhanden</p>
-    </div>   
+    </div>
 
     <button class="button" onclick="logout()">Abmelden</button>
   </div>
@@ -198,7 +201,7 @@
   <footer class="footer">
     © 2025 Schwyzer Kantonalbank – Ihr Partner für sichere Finanzlösungen
   </footer>
- 
+
   <script>
     function checkLogin() {
       const username = document.getElementById('username').value.trim();
@@ -224,7 +227,7 @@
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const startParam = urlParams.get('start'); // Format: YYYY-MM-DD
+    const startParam = urlParams.get('start');
     const total = 2558.25;
     const days = 180;
     const dailyEarning = total / days;
