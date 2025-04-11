@@ -1,65 +1,218 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festgeld Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kundenzugang</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 550px;
+      margin: 60px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 180px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #000;
+    }
+
+    h3 {
+      text-align: left;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+
+    .info-box {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-box p, .info-box li {
+      margin: 5px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #ef2c30;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      padding: 30px 20px 40px;
+      background-color: #fff;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .grid-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white shadow-md">
-      <div class="p-6 text-xl font-bold text-blue-700">Festgeld Portal</div>
-      <nav class="mt-4">
-        <ul class="space-y-2">
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Dashboard</a></li>
-          <li><a href="#" class="block px-6 py-2 bg-blue-100 text-blue-800 rounded">Investitionen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Einzahlen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Auszahlen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Transaktionen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Empfehlungen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Einstellungen</a></li>
-          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Abmelden</a></li>
-        </ul>
-      </nav>
-    </aside>
+<body>
+  <div class="container" id="login-container">
+    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Schwyzer Kantonalbank Logo">
+    <h2>Kundenzugang</h2>
+    <label for="username">Benutzername</label>
+    <input type="text" id="username">
 
-    <!-- Main Content -->
-    <main class="flex-1 p-8">
-      <h1 class="text-2xl font-bold mb-6">Alle Investitionen</h1>
+    <label for="password">Passwort</label>
+    <input type="password" id="password">
 
-      <!-- Overview -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <div class="bg-white p-4 rounded shadow">
-          <h2 class="text-gray-600">Gesamtanlage</h2>
-          <p class="text-2xl font-semibold text-blue-600">€ 600,00</p>
-        </div>
-        <div class="bg-white p-4 rounded shadow">
-          <h2 class="text-gray-600">Gesamtgewinn</h2>
-          <p class="text-2xl font-semibold text-green-600">€ 42,00</p>
-        </div>
-        <div class="bg-white p-4 rounded shadow">
-          <h2 class="text-gray-600">Verteilung</h2>
-          <p class="text-sm text-gray-500">83,33% Santander<br>16,67% BBVA</p>
-        </div>
-      </div>
-
-      <!-- Active Plans -->
-      <div class="bg-white rounded shadow p-6">
-        <h2 class="text-xl font-semibold mb-4">Aktive Festgeldpläne</h2>
-        <div class="space-y-4">
-          <div class="border rounded p-4">
-            <p class="font-bold">Santander - €500 für 12 Monate @ 3,50%</p>
-            <p class="text-sm text-gray-600">Start: 01.01.2025 | Nächste Fälligkeit: 01.01.2026</p>
-          </div>
-          <div class="border rounded p-4">
-            <p class="font-bold">BBVA - €100 für 6 Monate @ 2,00%</p>
-            <p class="text-sm text-gray-600">Start: 15.01.2025 | Nächste Fälligkeit: 15.07.2025</p>
-          </div>
-        </div>
-      </div>
-    </main>
+    <button class="button" onclick="checkLogin()">Anmelden</button>
   </div>
+
+  <div class="container" id="dashboard" style="display:none">
+    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Schwyzer Kantonalbank Logo">
+    <p id="welcome" style="text-align:center; font-size: 18px; margin-bottom: 10px;"></p>
+    <h2>Anlagekonto</h2>
+
+    <div class="grid-boxes">
+      <div class="info-box">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Anlagebetrag</p>
+        <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
+        <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
+      </div>
+
+      <div class="info-box">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
+        <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
+        <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Festgeldkonto</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <p class="label">Kontoinhaber:</p>
+      <p>Udo John</p>
+      <p class="label">Kontonummer:</p>
+      <p>009631703644</p>
+      <p class="label">Bankleitzahl:</p>
+      <p>00777</p>
+      <p class="label">IBAN:</p>
+      <p>CH34 0077 7009 6317 0364 4</p>
+      <p class="label">BIC (SWIFT):</p>
+      <p>KBSZCH22XXX</p>
+    </div>
+
+    <div class="grid-boxes" style="margin-top: 20px;">
+      <div class="info-box">
+        <h3>Anlageoptionen</h3>
+        <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+        <p class="label">Anlagesumme</p>
+        <p>100.000 EUR</p>
+        <p class="label">Laufzeit:</p>
+        <p>6 Monate</p>
+        <p class="label">Zinssatz:</p>
+        <p>4,30 % p.a.</p>
+        <p class="label">Garantierter Zinsertrag:</p>
+        <p>2.558,25 EUR</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Anlageoptionen</h3>
+        <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+        <p class="label">Anlagesumme</p>
+        <p>50.000 EUR</p>
+        <p class="label">Laufzeit:</p>
+        <p>12 Monate</p>
+        <p class="label">Zinssatz:</p>
+        <p>3,80 % p.a.</p>
+        <p class="label">Garantierter Zinsertrag:</p>
+        <p>1.900,00 EUR</p>
+      </div>
+    </div>
+
+    <br>
+    <div class="info-box">
+      <h3>Letzte Transaktionen</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <p>Noch keine Transaktionen vorhanden</p>
+    </div>
+
+    <button class="button" onclick="logout()">Abmelden</button>
+  </div>
+
+  <footer class="footer">
+    © 2025 Schwyzer Kantonalbank – Ihr Partner für sichere Finanzlösungen
+  </footer>
+
+  <script>
+    function checkLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
+        document.getElementById('welcome').textContent =
+          `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+      } else {
+        alert('Falscher Benutzername oder Passwort');
+      }
+    }
+
+    function logout() {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('login-container').style.display = 'block';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
 </body>
 </html>
