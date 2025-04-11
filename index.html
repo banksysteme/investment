@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festgeld Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md">
+      <div class="p-6 text-xl font-bold text-blue-700">Festgeld Portal</div>
+      <nav class="mt-4">
+        <ul class="space-y-2">
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Dashboard</a></li>
+          <li><a href="#" class="block px-6 py-2 bg-blue-100 text-blue-800 rounded">Investitionen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Einzahlen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Auszahlen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Transaktionen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Empfehlungen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Einstellungen</a></li>
+          <li><a href="#" class="block px-6 py-2 hover:bg-gray-100">Abmelden</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <h1 class="text-2xl font-bold mb-6">Alle Investitionen</h1>
+
+      <!-- Overview -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white p-4 rounded shadow">
+          <h2 class="text-gray-600">Gesamtanlage</h2>
+          <p class="text-2xl font-semibold text-blue-600">€ 600,00</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h2 class="text-gray-600">Gesamtgewinn</h2>
+          <p class="text-2xl font-semibold text-green-600">€ 42,00</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h2 class="text-gray-600">Verteilung</h2>
+          <p class="text-sm text-gray-500">83,33% Santander<br>16,67% BBVA</p>
+        </div>
+      </div>
+
+      <!-- Active Plans -->
+      <div class="bg-white rounded shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Aktive Festgeldpläne</h2>
+        <div class="space-y-4">
+          <div class="border rounded p-4">
+            <p class="font-bold">Santander - €500 für 12 Monate @ 3,50%</p>
+            <p class="text-sm text-gray-600">Start: 01.01.2025 | Nächste Fälligkeit: 01.01.2026</p>
+          </div>
+          <div class="border rounded p-4">
+            <p class="font-bold">BBVA - €100 für 6 Monate @ 2,00%</p>
+            <p class="text-sm text-gray-600">Start: 15.01.2025 | Nächste Fälligkeit: 15.07.2025</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
