@@ -154,33 +154,15 @@
       </div>
 
       <div class="info-box">
-        <div style="margin-top: 10px;">
-      <label style="font-weight: bold;">Laufzeit-Fortschritt:</label>
-     <div style="background-color: #eee; border-radius: 20px; overflow: hidden; height: 20px; margin-top: 5px;">
-    <div id="progress-bar" style="background-color: #22c55e; height: 100%; width: 0%; transition: width 0.6s;"></div>
-   </div>
-      <p id="progress-text" style="margin-top: 5px; font-size: 14px; color: #333;"></p>
-   <div id="month-icons" style="display: flex; gap: 8px; margin-top: 10px;"></div>
-  </div>
       <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
-        <div style="margin-top: 10px;">
-  <label style="font-weight: bold;">Laufzeit-Fortschritt:</label>
-  <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px;">
-    <span>0 EUR</span>
-    <span>2.558,25 EUR</span>
-  </div>
-  <div style="background-color: #eee; border-radius: 20px; overflow: hidden; height: 20px;">
-    <div id="progress-bar" style="background-color: #22c55e; height: 100%; width: 0%; transition: width 0.6s;"></div>
-  </div>
-  <p id="progress-text" style="margin-top: 5px; font-size: 14px; color: #333;"></p>
-  <div id="month-icons" style="display: flex; gap: 8px; margin-top: 10px;"></div>
-</div>
-<p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
-        <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
-      </div>
+      <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
+      <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
+     <div style="margin-top: 15px;">
+      <p id="countdown" style="font-weight: bold; color: #333; font-size: 15px; margin-top: 10px;"></p>
+     </div>
     </div>
-
-    <div class="info-box" style="margin-top: 20px;">
+    
+   <div class="info-box" style="margin-top: 20px;">
       <h3>Festgeldkonto</h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
       <p class="label">Kontoinhaber:</p>
@@ -237,56 +219,52 @@
     © 2025 Schwyzer Kantonalbank – Ihr Partner für sichere Finanzlösungen
   </footer>
 
-    <script>
-    function checkLogin() {
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
+   <script>
+  function checkLogin() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-      if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
-        document.getElementById('welcome').textContent =
-          `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('dashboard').style.display = 'block';
+    if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
+      document.getElementById('welcome').textContent =
+        `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
 
-        // Fortschritt automatisch aus Startdatum berechnen
-        const laufzeitInMonaten = 6;
-        const startDatum = new Date('2025-04-15');
-        const heute = new Date();
+      const laufzeitInMonaten = 6;
+      const startDatum = new Date('2025-04-15');
+      const heute = new Date();
+      const endDatum = new Date(startDatum);
+      endDatum.setMonth(endDatum.getMonth() + laufzeitInMonaten);
 
-        const diffInMonaten = (heute.getFullYear() - startDatum.getFullYear()) * 12 + (heute.getMonth() - startDatum.getMonth());
-        const vergangeneMonate = Math.max(0, diffInMonaten);
+      const diffInMonaten = (heute.getFullYear() - startDatum.getFullYear()) * 12 + (heute.getMonth() - startDatum.getMonth());
+      const vergangeneMonate = Math.max(0, diffInMonaten);
 
-        let prozent = (vergangeneMonate / laufzeitInMonaten) * 100;
-        prozent = Math.max(0, Math.min(prozent, 100));
+      let prozent = (vergangeneMonate / laufzeitInMonaten) * 100;
+      prozent = Math.max(0, Math.min(prozent, 100));
 
-        const progressBar = document.getElementById("progress-bar");
-        const progressText = document.getElementById("progress-text");
-        progressBar.style.width = `${prozent}%`;
-        progressText.textContent = `${vergangeneMonate} von ${laufzeitInMonaten} Monaten abgeschlossen`;
-
-        const monthIcons = document.getElementById("month-icons");
-        monthIcons.innerHTML = "";
-        for (let i = 1; i <= laufzeitInMonaten; i++) {
-          const filled = i <= vergangeneMonate;
-          const circle = document.createElement("div");
-          circle.style.width = "16px";
-          circle.style.height = "16px";
-          circle.style.borderRadius = "50%";
-          circle.style.backgroundColor = filled ? "#22c55e" : "#ccc";
-          monthIcons.appendChild(circle);
-        }
+      // Countdown
+      const countdownEl = document.getElementById("countdown");
+      const timeLeft = endDatum - heute;
+      if (timeLeft > 0) {
+        const tage = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const stunden = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const minuten = Math.floor((timeLeft / (1000 * 60)) % 60);
+        countdownEl.textContent = `Verbleibende Zeit: ${tage} Tage, ${stunden} Std, ${minuten} Min`;
       } else {
-        alert('Falscher Benutzername oder Passwort');
+        countdownEl.textContent = "Laufzeit abgeschlossen";
       }
+    } else {
+      alert('Falscher Benutzername oder Passwort');
     }
+  }
 
-    function logout() {
-      document.getElementById('dashboard').style.display = 'none';
-      document.getElementById('login-container').style.display = 'block';
-      document.getElementById('username').value = '';
-      document.getElementById('password').value = '';
-    }
-  </script>
+  function logout() {
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('login-container').style.display = 'block';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+  }
+</script>
 
 </body>
 </html>
