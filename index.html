@@ -223,7 +223,7 @@
     © 2025 Schwyzer Kantonalbank – Ihr Partner für sichere Finanzlösungen
   </footer>
 
-  <script>
+    <script>
     function checkLogin() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
@@ -242,11 +242,14 @@
         const diffInMonaten = (heute.getFullYear() - startDatum.getFullYear()) * 12 + (heute.getMonth() - startDatum.getMonth());
         const vergangeneMonate = Math.max(0, diffInMonaten);
 
-        const prozent = Math.min((vergangeneMonate / laufzeitInMonaten) * 100, 100);
-        const dashArray = 2 * Math.PI * 25;
+        let prozent = (vergangeneMonate / laufzeitInMonaten) * 100;
+        prozent = Math.max(0, Math.min(prozent, 100));
+
+        const dashArray = 2 * Math.PI * 25; // Umfang bei r=25
         const dashOffset = dashArray - (dashArray * prozent / 100);
 
         const fillCircle = document.querySelector('.chart-fill');
+        fillCircle.setAttribute('stroke-dasharray', dashArray);
         fillCircle.setAttribute('stroke-dashoffset', dashOffset);
       } else {
         alert('Falscher Benutzername oder Passwort');
