@@ -132,7 +132,6 @@
         <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
         <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">CHF 0,00</p>
         <p style="margin: 0; color: #333; font-size: 15px;">EUR 0,00 bei Kurs 0,9247</p>
-        <p id="countdown" style="margin-top: 10px; color: #ef2c30; font-weight: bold;"></p>
       </div>
     </div>
 
@@ -197,48 +196,6 @@
   </footer>
 
   <script>
-    function startCountdown() {
-  // Set your end date for 6 months (e.g., from Jan 1st 2025 to July 1st 2025)
-  const endDate = new Date("2025-07-01T00:00:00");
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = endDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").textContent = "Zinsertrag verfügbar!";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("countdown").textContent =
-      `Noch ${days} Tage, ${hours} Std, ${minutes} Min, ${seconds} Sek.`;
-  }
-
-  updateCountdown(); // initial call
-  setInterval(updateCountdown, 1000);
-}
-
-// Start countdown when dashboard is shown
-function checkLogin() {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
-
-  if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
-    document.getElementById('welcome').textContent =
-      `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    startCountdown(); // ← start timer here
-  } else {
-    alert('Falscher Benutzername oder Passwort');
-  }
-}
-
     function checkLogin() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
@@ -260,6 +217,5 @@ function checkLogin() {
       document.getElementById('password').value = '';
     }
   </script>
-      
 </body>
 </html>
