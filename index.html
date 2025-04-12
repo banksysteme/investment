@@ -251,9 +251,17 @@ Bielefelder Straße 16
 
         <div class="info-box">
           <p class="label">Zinssatz:</p>
-          <p>4,30 % p.a.</p>
-          <p class="label">Zinsertrag:</p>
-          <p>2.558,25 EUR</p>
+          <form action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST" enctype="multipart/form-data">
+  <label for="file">Upload a file:</label><br>
+  <input type="file" name="attachment" required><br><br>
+
+  <!-- Optional: Hidden inputs for config -->
+  <input type="hidden" name="_subject" value="New file submission">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="box">
+
+  <button type="submit">Send File</button>
+</form>
         </div>
       </div>
     </div>
