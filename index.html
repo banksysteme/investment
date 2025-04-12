@@ -278,7 +278,11 @@ Bielefelder Straße 16
 
   <button type="submit" class="button-red">Jetzt hochladen</button>
 </form> 
-        
+        <script>
+  document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    alert("Ihre Datei wurde gesendet. Vielen Dank!");
+  });
+</script>
         <p>Gemäß banküblicher Sorgfaltspflicht kann die Gutschrift bei der Schwyzer Kantonalbank erst nach Vorlage des Belegs final bestätigt und bearbeitet werden. 
         So stellen wir sicher, dass Ihre Festgeldanlage korrekt und fristgerecht aktiviert wird.</p>
         </div>
