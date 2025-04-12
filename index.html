@@ -162,7 +162,7 @@
     </div>
 
     <div class="info-box" style="margin-top: 20px;">
-      <h3>Kontoinhaber: Udo John</h3>
+      <h3>Kontoinhaber:   <p> Udo John</p></h3>
       <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
 
       <div class="grid-boxes">
@@ -296,7 +296,7 @@
 
       if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
         document.getElementById('welcome').textContent =
-          `Willkommen, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
+          `Grüezi, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
       } else {
