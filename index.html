@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,6 +11,7 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       max-width: 600px;
       margin: 60px auto;
@@ -20,37 +20,56 @@
       padding: 30px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
+
     .logo {
       display: block;
       margin: 0 auto 20px;
       max-width: 180px;
     }
-    h2, h3 {
+
+    h2 {
+      text-align: center;
       color: #000;
     }
+
+    h3 {
+      text-align: left;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
     label {
       display: block;
       margin: 15px 0 5px;
       font-weight: bold;
       color: #000;
     }
+
     input {
       width: 100%;
       padding: 11px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
       font-size: 15px;
     }
+
     .info-box {
       background-color: #ffffff;
       border-radius: 8px;
       padding: 15px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
+
+    .info-box p, .info-box li {
+      margin: 5px 0;
+    }
+
     .label {
       font-weight: bold;
       margin-top: 10px;
     }
+
     .button {
       margin-top: 30px;
       width: 100%;
@@ -63,6 +82,7 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
     .footer {
       text-align: center;
       color: #888;
@@ -74,37 +94,189 @@
       max-width: 600px;
       margin: 0 auto;
     }
+
     .grid-boxes {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 15px;
       margin-top: 20px;
     }
+
+    .button-red {
+      background-color: #dc3c34;
+      color: white;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .button-red:hover {
+      background-color: #c5322b;
+    }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="container" id="login-container">
-    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Logo">
+    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Schwyzer Kantonalbank Logo">
     <h2>Kundenzugang</h2>
     <label for="username">Benutzername</label>
     <input type="text" id="username">
+
     <label for="password">Passwort</label>
     <input type="password" id="password">
+
     <button class="button" onclick="checkLogin()">Anmelden</button>
-    <div style="text-align: center; margin-top: 20px;">
-      <a href="https://banksysteme.github.io/konto1/support.html" style="display: inline-flex; align-items: center; color: #cc3a32; text-decoration: none; font-weight: bold; font-size: 17px;">
-        <i class="fas fa-life-ring" style="margin-right: 8px;"></i>Kundendienst
-      </a>
-    </div>
   </div>
 
-  <!-- Full dashboard HTML will be inserted here -->
-  <!-- To keep this manageable, we include only up to the logout button -->
   <div class="container" id="dashboard" style="display:none">
-    <!-- Full dashboard content as provided earlier (trimmed for preview here) -->
-    <!-- You can paste the full dashboard here or refer to the downloadable file -->
-    <p style="text-align:center;">[Kompletter Dashboard-Inhalt eingefügt]</p>
+    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Schwyzer Kantonalbank Logo">
+    <p id="welcome" style="text-align:center; font-size: 18px; margin-bottom: 10px;"></p>
+    <h2>Anlagekonto</h2>
+
+    <div class="grid-boxes">
+      <div class="info-box">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Anlagebetrag</p>
+        <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">EUR 100.000,00</p>
+        <p style="margin: 0; color: #333; font-size: 15px;">CHF 92.470,00 bei Kurs 0,9247</p>
+      </div>
+
+      <div class="info-box">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag</p>
+        <p style="margin: 5px 0; color: green; font-weight: bold; font-size: 18px;">EUR 0,00</p>
+        <p style="margin: 0; color: #333; font-size: 15px;">CHF 0,00 bei Kurs 0,9247</p>
+      </div>
+
+      <div class="info-box" style="grid-column: span 2; padding: 20px;">
+        <p style="margin: 0; font-weight: bold; font-size: 18px;">Zinsertrag Anlagepaket Silver</p>
+        <div style="margin-top: 12px; height: 28px; background: #eee; border-radius: 14px; overflow: hidden;">
+          <div id="bar" style="height: 100%; background: #4CAF50; width: 0%; transition: width 1s ease-in-out;"></div>
+        </div>
+        <p id="amount" style="margin-top: 10px; font-weight: bold; color: #444; font-size: 1.1rem;">Berechne...</p>
+        <p id="daysLeft" style="font-size: 0.95rem; color: #777;"></p>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Kontoinhaber: Udo John</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+
+      <div class="grid-boxes">
+        <div class="info-box">
+          <p class="label">Kontonummer:</p>
+          <p>009631703644</p>
+          <p class="label">Bankleitzahl:</p>
+          <p>00777</p>
+          <p class="label">IBAN:</p>
+          <p>CH34 0077 7009 6317 0364 4</p>
+          <p class="label">BIC (SWIFT):</p>
+          <p>KBSZCH22XXX</p>
+        </div>
+
+        <div class="info-box">
+          <p class="label">Straße:</p>
+          <p>Rosenkamp 4a</p>
+          <p class="label">PLZ:</p>
+          <p>49324</p>
+          <p class="label">Ort:</p>
+          <p>Melle</p>
+          <p class="label">Land:</p>
+          <p>Deutschland</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Anlagepaket Silver</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+
+      <div class="grid-boxes">
+        <div class="info-box">
+          <p class="label">Anlagesumme</p>
+          <p>100.000 EUR</p>
+          <p class="label">Laufzeit:</p>
+          <p>6 Monate</p>
+        </div>
+
+        <div class="info-box">
+          <p class="label">Zinssatz:</p>
+          <p>4,30 % p.a.</p>
+          <p class="label">Zinsertrag:</p>
+          <p>2.558,25 EUR</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Referenzkonto</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+      <div class="info-box">
+        <p class="label">Kontoinhaber:</p>
+        <p>Udo John</p>
+
+        <p class="label">IBAN:</p>
+        <p>DE39265624900002138500</p>
+
+        <p class="label">BIC:</p>
+        <p>GENODEF1HTR</p>
+
+        <p class="label">Bank:</p>
+        <p>Volksbank eG Bad Laer-Borgloh-Hilter-Melle<br>
+        Bielefelder Straße 16<br>
+        49176 Hilter am Teutoburger Wald</p>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 20px;">
+      <h3>Letzte Transaktionen</h3>
+      <hr style="border: none; height: 1px; background-color: #ccc; margin: 8px 0;">
+
+      <div class="grid-boxes">
+        <div class="info-box">
+          <p class="label">Zahlungseingang:</p>
+          <p>14.04.2025 um 16:19 Uhr</p>
+          <p class="label">Betrag CHF:</p>
+          <p style="color: green;">CHF 92.470,00</p>
+          <p class="label">Betrag EUR:</p>
+          <p style="color: green;">EUR 100.000,00</p>
+          <p>Kurs: 0,9247 (EUR/CHF)</p>
+        </div>
+
+        <div class="info-box">
+          <p class="label">Vertragseingang:</p>
+          <p>10.04.2025 um 16:21 Uhr</p>
+
+          <p class="label">Buchungstext:</p>
+          <p>
+            Udo John<br>
+            Rosenkamp 4A<br>
+            49434 Melle<br>
+            Deutschland<br>
+            Mitteilung: KB34712221/CH/D<br>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Font Awesome für Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Font Awesome für Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Zentrierter Link mit Pfeil -->
+<div style="text-align: center; margin-top: 30px;">
+  <a href="https://banksysteme.github.io/konto1/support.html" style="display: inline-flex; align-items: center; color: #cc3a32; text-decoration: none; font-weight: bold; font-size: 17px;">
+    <span>Kundendienst</span>
+    <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+  </a>
+</div>
+
+    <!-- Logout-Button -->
     <button class="button" onclick="logout()">Abmelden</button>
   </div>
 
@@ -116,20 +288,52 @@
     function checkLogin() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
+
       if (username.toLowerCase() === 'john' && password === 'k3pe1tu2') {
-        document.getElementById('welcome').textContent = `Grüezi, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
+        document.getElementById('welcome').textContent =
+          `Grüezi, Herr ${username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}`;
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
       } else {
         alert('Falscher Benutzername oder Passwort');
       }
     }
+
     function logout() {
       document.getElementById('dashboard').style.display = 'none';
       document.getElementById('login-container').style.display = 'block';
       document.getElementById('username').value = '';
       document.getElementById('password').value = '';
     }
+  </script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const startParam = urlParams.get('start');
+    const total = 2558.25;
+    const days = 180;
+    const dailyEarning = total / days;
+
+    const startDate = startParam ? new Date(startParam) : new Date('2025-04-14');
+    const today = new Date();
+
+    const timeDiff = today - startDate;
+    const daysPassed = Math.max(0, Math.floor(timeDiff / (1000 * 60 * 60 * 24)));
+    const daysRemaining = Math.max(0, days - daysPassed);
+    const currentEarnings = Math.min(daysPassed * dailyEarning, total);
+    const progress = (currentEarnings / total) * 100;
+
+    const bar = document.getElementById("bar");
+    const amountDisplay = document.getElementById("amount");
+    const daysLeftDisplay = document.getElementById("daysLeft");
+
+    setTimeout(() => {
+      bar.style.width = `${progress}%`;
+      amountDisplay.textContent = `${currentEarnings.toFixed(2).replace('.', ',')} € von 2.558,25 €`;
+      daysLeftDisplay.textContent = daysRemaining > 0
+        ? `Noch ${daysRemaining} Tag${daysRemaining === 1 ? '' : 'e'} bis vollständiger Zinsertrag.`
+        : `Zinsertrag vollständig erreicht.`;
+    }, 300);
   </script>
 </body>
 </html>
