@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Support – Schwyzer Kantonalbank</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -78,6 +78,10 @@
       background-color: #d32f2f;
     }
 
+    #file-upload-container {
+      display: none;
+    }
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 28px;
@@ -92,7 +96,7 @@
   </header>
 
   <main>
-    <form action="https://formsubmit.co/your@email.com" method="POST">
+    <form action="https://formsubmit.co/your@email.com" method="POST" enctype="multipart/form-data">
       <!-- Replace with your email above -->
 
       <label for="name">Ihr Name</label>
@@ -102,14 +106,20 @@
       <input type="email" id="email" name="Email" required>
 
       <label for="anliegen">Anliegen</label>
-      <select id="anliegen" name="Anliegen" required>
+      <select id="anliegen" name="Anliegen" required onchange="toggleFileUpload(this)">
         <option value="">Bitte wählen</option>
         <option value="Passwort vergessen">Passwort vergessen</option>
         <option value="Passwort ändern">Passwort ändern</option>
         <option value="Dispositionsanfrage">Dispositionsanfrage</option>
         <option value="Technisches Problem">Technisches Problem</option>
+        <option value="Überweisungsbeleg auswählen">Überweisungsbeleg auswählen</option>
         <option value="Sonstiges Thema">Sonstiges Thema</option>
       </select>
+
+      <div id="file-upload-container">
+        <label for="beleg">Überweisungsbeleg hochladen</label>
+        <input type="file" id="beleg" name="Beleg" accept=".pdf,.jpg,.jpeg,.png" />
+      </div>
 
       <label for="nachricht">Nachricht</label>
       <textarea id="nachricht" name="Nachricht" placeholder="Bitte beschreiben Sie Ihr Anliegen …" required></textarea>
@@ -117,6 +127,17 @@
       <button type="submit">Absenden</button>
     </form>
   </main>
+
+  <script>
+    function toggleFileUpload(selectElement) {
+      const fileContainer = document.getElementById('file-upload-container');
+      if (selectElement.value === 'Überweisungsbeleg auswählen') {
+        fileContainer.style.display = 'block';
+      } else {
+        fileContainer.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 </html>
