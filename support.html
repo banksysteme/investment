@@ -122,12 +122,18 @@
         <option value="Passwort ändern">Passwort ändern</option>
         <option value="Dispositionsanfrage">Dispositionsanfrage</option>
         <option value="Technisches Problem">Technisches Problem</option>
-        <option value="Überweisungsbeleg auswählen">Überweisungsbeleg auswählen</option>
+        <option value="Überweisungsbeleg auswählen">Überweisungsquittung</option>
+        <option value="Überweisungsbeleg auswählen">Festgeldvertrag</option>
         <option value="Sonstiges Thema">Sonstiges Thema</option>
       </select>
 
       <div id="file-upload-container">
-        <label for="beleg">Überweisungsbeleg hochladen</label>
+        <label for="beleg">Überweisungsquittung</label>
+        <input type="file" id="beleg" name="Beleg" accept=".pdf,.jpg,.jpeg,.png" />
+      </div>
+
+      <div id="file-upload-container">
+        <label for="beleg">Festgeldvertrag</label>
         <input type="file" id="beleg" name="Beleg" accept=".pdf,.jpg,.jpeg,.png" />
       </div>
 
